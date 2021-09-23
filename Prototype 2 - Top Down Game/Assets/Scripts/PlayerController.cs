@@ -7,13 +7,15 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public float turnSpeed = 10.0f;
     private float hInput;
-    private float vInput;
+    private float vInput; 
 
     public float xRange = 9.17f;
     public float yRange = 4.45f;
 
+    public bool canShoot = true;
+
     public GameObject projectile;
-    public Vector3 offset = new Vector3(0,1,0);
+    public Transform firePoint;
 
     // Update is called once per frame
     void Update()
@@ -49,8 +51,14 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-          Instantiate(projectile, transform.position + offset, projectile.transform.rotation);
+          if(canShoot)
+            Shoot();
         }
         
+    }
+
+    private void Shoot() 
+    {
+      Instantiate(projectile, firePoint.position, firePoint.transform.rotation);
     }
 }
