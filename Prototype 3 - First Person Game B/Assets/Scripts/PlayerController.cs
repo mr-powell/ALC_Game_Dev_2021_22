@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // Movement
     public float moveSpeed; // How fast the player moves
-    public float jumpForce;
+    public float jumpForce; // How high the player jumps
     // Camera
     public float lookSensitivity; // Mouse movement sensitivity
     public float maxLookX;  // Lowest down we can look
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void CamLook()
     {
-        // Get mouse input so we can look aaround with the mouse
+        // Get mouse input so we can look around with the mouse
         float y = Input.GetAxis("Mouse X") * lookSensitivity;
         rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
 
