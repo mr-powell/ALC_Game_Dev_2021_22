@@ -26,8 +26,7 @@ public class Weapons : MonoBehaviour
         {
             isPlayer = true;
         }
-
-    }   
+    } 
 
     public bool CanShoot()
     {
@@ -45,20 +44,9 @@ public class Weapons : MonoBehaviour
       lastShootTime = Time.time;
       curAmmo--; 
 
-      GameObject bullet = Instatiate(bulletPrefab, muzzle.position, muzzle.rotation);
+      GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
 
       // set the velocity
       bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed; 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
