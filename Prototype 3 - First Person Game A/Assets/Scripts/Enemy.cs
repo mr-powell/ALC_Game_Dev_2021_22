@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
     private Weapons weapon;
     private GameObject target;
 
+    private Rigidbody rb;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +35,10 @@ public class Enemy : MonoBehaviour
         //Gather the Components
         weapon = GetComponent<Weapons>();
         target = FindObjectOfType<PlayerController>().gameObject;
+        rb = GetComponent<Rigidbody>();
 
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
+
     }
 
     void UpdatePath()
@@ -42,7 +47,7 @@ public class Enemy : MonoBehaviour
         NavMeshPath navMeshPath = new NavMeshPath();
         NavMesh.CalculatePath(transform.position, target.transform.position, NavMesh.AllAreas, navMeshPath);
 
-        // Save path as a ist
+        // Save path as a list
         path = navMeshPath.corners.ToList();
     }
 
@@ -68,7 +73,10 @@ public class Enemy : MonoBehaviour
 
      void Die()
      {
-         Destroy(gameObject);
+         rb.constraints = RigidbodyConstraints.None;
+         rb.AddForce(Vector3.back * 10, ForceMode.Impulse); 
+         rb.AddForce(Vector3.up * 5, ForceMode.Impulse); 
+         Destroy(gameObject,1);
      }
 
     // Update is called once per frame
