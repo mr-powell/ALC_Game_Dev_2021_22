@@ -17,12 +17,24 @@ public class Bullet : MonoBehaviour
     {
         shootTime = Time.time;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //Did we hit the player or the enemy
+        if(other.CompareTag("Player"))
+            other.GetComponent<PlayerController>().TakeDamage(damage);
+        else if(other.CompareTag("Enemy"))
+            other.GetComponent<Enemy>().TakeDamage(damage);
+
+        //Disable the bullet
+        gameObject.SetActive(false);
+
+    }
     // Update is called once per frame
     void Update()
     {
         if(Time.time - shootTime >= lifeTime)
-            gameObject.SetActive(false);
-        
+            gameObject.SetActive(false);   
         
     }
 }
