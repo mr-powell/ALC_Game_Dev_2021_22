@@ -71,14 +71,14 @@ public class GameUI : MonoBehaviour
 
     public void OnResumeButton()
     {
-
+        GameManager.instance.TogglePauseGame();
     }
     public void OnRestartButton()
     {
-        SceneManger.LoadScene("Game");
+        SceneManager.LoadScene("Game");
     }
     public void OnMenuButton()
     {
-        SceneManage.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
     }
 }
