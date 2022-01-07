@@ -128,6 +128,7 @@ MonoBehaviour:
   rotationSpeed: 25
   bobSpeed: 0.25
   bobHeight: 0.5
+  pickupSfx: {fileID: 8300000, guid: a6cf6c9f21ee44a56a763eded64b9b46, type: 3}
 --- !u!1001 &2333297084210089141
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,7 +19,8 @@ public class Pickup : MonoBehaviour
     public float bobHeight;
 
     private Vector3 startPos;
-    private bool bobbingUp;    
+    private bool bobbingUp;
+    public AudioClip pickupSfx;    
     
     void Start()
     {
@@ -42,7 +43,9 @@ public class Pickup : MonoBehaviour
                 case PickupType.Ammo:
                 player.GiveAmmo(value);
                 break;
-            }
+            } 
+            // Play pickup audio clip
+            other.GetComponent<AudioSource>().PlayOneShot(pickupSfx);
 
             Destroy(gameObject);            
             
